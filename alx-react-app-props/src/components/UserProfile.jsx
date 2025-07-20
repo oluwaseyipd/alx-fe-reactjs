@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import UserContext from '../UserContext'; // adjust path if necessary
 
- const UserProfile = (props) => {
-   return (
-      <div style={{ border: '1px solid gray', padding: '10px', margin: '10px' }}>
-   <h2 style={{ color: 'blue' }}>{props.name}</h2>
-   <p>Age: <span style={{ fontWeight: 'bold' }}>{props.age}</span></p>
-   <p>Bio: {props.bio}</p>
- </div>
-   );
- };
+const UserProfile = () => {
+  const { name, age, bio } = useContext(UserContext);
 
-export default UserProfile
+  return (
+    <div style={{ border: '1px solid gray', padding: '10px', margin: '10px' }}>
+      <h2 style={{ color: 'blue' }}>{name}</h2>
+      <p>Age: <span style={{ fontWeight: 'bold' }}>{age}</span></p>
+      <p>Bio: {bio}</p>
+    </div>
+  );
+};
+
+export default UserProfile;
