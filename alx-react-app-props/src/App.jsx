@@ -8,8 +8,8 @@ import MainContent from './MainContent';
 import Footer from './Footer';
 import UserProfile from './components/UserProfile'
 import Counter from './components/Counter'
-import ProfilePage from './ProfilePage';
-import UserContext from './UserContext';
+import ProfilePage from './components/ProfilePage';
+import UserContext from './components/UserContext';
 
 function App() {
   const [count, setCount] = useState(0) // Not used anywhere — can be removed if not needed
