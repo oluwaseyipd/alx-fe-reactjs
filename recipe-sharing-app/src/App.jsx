@@ -7,6 +7,9 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
 import DeleteRecipeButton from './components/DeleteRecipeButton';
+import SearchBar from './components/SearchBar';
+
+
 
 
 
