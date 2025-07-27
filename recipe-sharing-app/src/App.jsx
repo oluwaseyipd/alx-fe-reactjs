@@ -8,8 +8,8 @@ import RecipeDetails from './components/RecipeDetails';
 import EditRecipeForm from './components/EditRecipeForm';
 import DeleteRecipeButton from './components/DeleteRecipeButton';
 import SearchBar from './components/SearchBar';
-
-
+import RecommendationsList from './components/RecommendationsList';
+import FavoritesList from './components/FavoritesList';
 
 
 
@@ -22,12 +22,16 @@ function App() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/add">Add Recipe</Link>
+        <Link to="/favorites">Favorites</Link>
+        <Link to="/recommendations">Recommendations</Link>
       </nav>
-
+      <SearchBar />
       <Routes>
         <Route path="/" element={<RecipeList />} />
         <Route path="/add" element={<AddRecipeForm />} />
         <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
+        <Route path="/favorites" element={<FavoritesList />} />
+        <Route path="/recommendations" element={<RecommendationsList />} />
       </Routes>
     </Router>
       
