@@ -64,7 +64,7 @@ const Search = () => {
       </form>
 
       {loading && <p className="text-center">Loading...</p>}
-      {error && <p className="text-center text-red-500">Looks like something went wrong.</p>}
+      {error && <p className="text-center text-red-500">Looks like we cant find the user</p>}
 
       <div className="grid gap-4">
         {results.map((user) => (
