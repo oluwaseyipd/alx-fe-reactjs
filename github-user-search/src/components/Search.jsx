@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { fetchAdvancedUserSearch } from '../services/githubService';
+import { fetchAdvancedUserSearch as fetchUserData } from '../services/githubService';
 
 const Search = () => {
   const [form, setForm] = useState({ username: '', location: '', repos: '' });
@@ -18,7 +18,7 @@ const Search = () => {
     setResults([]);
 
     try {
-      const data = await fetchAdvancedUserSearch(form);
+      const data = await fetchUserData(form);
       setResults(data.items);
     } catch (err) {
       setError(true);
