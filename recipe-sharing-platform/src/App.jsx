@@ -1,13 +1,12 @@
-
-
 import './index.css'
+import HomePage from './components/HomePage'
 
 function App() {
 
 
   return (
     <>
-  <h1 className="text-orange-500">WElcome</h1>
+      <HomePage />
     </>
   )
 }
