@@ -44,7 +44,6 @@ const AddRecipeForm = () => {
     console.log("New Recipe:", newRecipe);
     alert("Recipe added successfully!");
 
-    // Clear form
     setTitle("");
     setIngredients("");
     setSteps("");
@@ -53,18 +52,22 @@ const AddRecipeForm = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 py-10 px-4">
-      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-2xl font-bold mb-6 text-center">Add a New Recipe</h1>
+      <div className="max-w-2xl mx-auto bg-white rounded-lg shadow-lg p-6 md:p-10">
+        <h1 className="text-2xl md:text-3xl font-bold mb-6 text-center">
+          Add a New Recipe
+        </h1>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Title */}
           <div>
-            <label className="block font-medium mb-2">Recipe Title</label>
+            <label className="block font-medium mb-2 text-sm md:text-base">
+              Recipe Title
+            </label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border border-gray-300 rounded-lg p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
               placeholder="Enter recipe title"
             />
             {errors.title && (
@@ -74,13 +77,13 @@ const AddRecipeForm = () => {
 
           {/* Ingredients */}
           <div>
-            <label className="block font-medium mb-2">
+            <label className="block font-medium mb-2 text-sm md:text-base">
               Ingredients (comma separated)
             </label>
             <textarea
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border border-gray-300 rounded-lg p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
               rows="4"
               placeholder="e.g. Eggs, Flour, Sugar"
             ></textarea>
@@ -91,11 +94,13 @@ const AddRecipeForm = () => {
 
           {/* Steps */}
           <div>
-            <label className="block font-medium mb-2">Preparation Steps</label>
+            <label className="block font-medium mb-2 text-sm md:text-base">
+              Preparation Steps
+            </label>
             <textarea
               value={steps}
               onChange={(e) => setSteps(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className="w-full border border-gray-300 rounded-lg p-3 md:p-4 focus:outline-none focus:ring-2 focus:ring-blue-400"
               rows="6"
               placeholder="Describe the preparation process..."
             ></textarea>
@@ -108,7 +113,7 @@ const AddRecipeForm = () => {
           <div className="text-center">
             <button
               type="submit"
-              className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition duration-300"
+              className="bg-blue-500 text-white px-6 py-3 md:px-8 md:py-4 rounded-lg hover:bg-blue-600 transition duration-300"
             >
               Add Recipe
             </button>
