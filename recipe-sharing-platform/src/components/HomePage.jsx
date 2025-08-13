@@ -13,7 +13,7 @@ const HomePage = () => {
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <h1 className="text-3xl font-bold text-center mb-8">Delicious Recipes</h1>
 
-      <div className="grid gap-6 grid-cols-1 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
         {recipes.map((recipe) => (
           <Link
             to={`/recipe/${recipe.id}`}
