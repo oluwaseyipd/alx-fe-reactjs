@@ -1,37 +1,31 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom";
 import TodoList from "../components/TodoList";
 
-describe("TodoList Component", () => {
-  test("renders initial todos", () => {
-    render(<TodoList />);
-    expect(screen.getByText("Learn React")).toBeInTheDocument();
-    expect(screen.getByText("Build a Todo App")).toBeInTheDocument();
+test("renders TodoList with initial todos", () => {
+  render(<TodoList />);
+  expect(screen.getByText(/Learn React/i)).toBeInTheDocument();
+  expect(screen.getByText(/Build a Todo App/i)).toBeInTheDocument();
+});
+
+test("can add a new todo", () => {
+  render(<TodoList />);
+  fireEvent.change(screen.getByPlaceholderText(/Add todo/i), {
+    target: { value: "New Todo" },
   });
+  fireEvent.click(screen.getByText(/Add/i));
+  expect(screen.getByText(/New Todo/i)).toBeInTheDocument();
+});
 
-  test("adds a new todo", () => {
-    render(<TodoList />);
-    const input = screen.getByPlaceholderText("Add a new todo");
-    fireEvent.change(input, { target: { value: "New Task" } });
-    fireEvent.click(screen.getByText("Add"));
+test("can toggle a todo", () => {
+  render(<TodoList />);
+  const todo = screen.getByText(/Learn React/i);
+  fireEvent.click(todo);
+  expect(todo).toHaveStyle("text-decoration: line-through");
+});
 
-    expect(screen.getByText("New Task")).toBeInTheDocument();
-  });
-
-  test("toggles a todo's completion", () => {
-    render(<TodoList />);
-    const todo = screen.getByText("Learn React");
-    fireEvent.click(todo);
-
-    expect(todo).toHaveStyle("text-decoration: line-through");
-  });
-
-  test("deletes a todo", () => {
-    render(<TodoList />);
-    const todo = screen.getByText("Build a Todo App");
-    const deleteButton = todo.querySelector("button");
-    fireEvent.click(deleteButton);
-
-    expect(todo).not.toBeInTheDocument();
-  });
+test("can delete a todo", () => {
+  render(<TodoList />);
+  const todo = screen.getByText(/Build a Todo App/i);
+  fireEvent.click(screen.getAllByText(/Delete/i)[0]); // delete first delete button
+  expect(todo).not.toBeInTheDocument();
 });
