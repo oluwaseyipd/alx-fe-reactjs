@@ -27,7 +27,7 @@ function App() {
       />
 
       {/* Dynamic Route for Blog Posts */}
-      <Route path="/blog/:postId" element={<BlogPost />} />
+       <Route path="/blog/:id" element={<BlogPost />} />
 
       {/* Catch-all redirect */}
       <Route path="*" element={<Navigate to="/" />} />
