@@ -8,9 +8,9 @@ const RegistrationForm = () => {
 
   const validate = () => {
     let newErrors = {};
-    if (!username.trim()) newErrors.username = "Username is required";
-    if (!email.trim()) newErrors.email = "Email is required";
-    if (!password.trim()) newErrors.password = "Password is required";
+    if (!username) newErrors.username = "Username is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
     return newErrors;
   };
 
@@ -35,7 +35,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={username}   
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
           className="w-full border px-2 py-1 rounded"
         />
@@ -47,7 +47,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={email}   
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-full border px-2 py-1 rounded"
         />
@@ -59,7 +59,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={password}   
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="w-full border px-2 py-1 rounded"
         />
