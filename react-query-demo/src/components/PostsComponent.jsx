@@ -1,24 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 
-const fetchPosts = async () => {
-  const { data } = await axios.get("https://jsonplaceholder.typicode.com/posts");
+const fetchPosts = async (page = 1) => {
+  const { data } = await axios.get(
+    `https://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=10`
+  );
   return data;
 };
 
 const PostsComponent = () => {
+  const [page, setPage] = useState(1);
+
   const {
     data: posts,
     error,
     isLoading,
     isError,
-    refetch,
     isFetching,
-  } = useQuery("posts", fetchPosts, {
-    staleTime: 1000 * 60, // data stays fresh for 1 min
-    cacheTime: 1000 * 60 * 5, // cache for 5 min
-    refetchOnWindowFocus: true, // refetch when window is focused
+    refetch,
+  } = useQuery(["posts", page], () => fetchPosts(page), {
+    keepPreviousData: true, // 
+    staleTime: 1000 * 60, // 1 min fresh
+    cacheTime: 1000 * 60 * 5, // 5 min cache
+    refetchOnWindowFocus: true,
   });
 
   if (isLoading) return <p className="text-center">Loading posts...</p>;
@@ -30,14 +35,14 @@ const PostsComponent = () => {
         <h2 className="text-xl font-semibold">Posts</h2>
         <button
           onClick={() => refetch()}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+          className="bg-[#C15F3C] text-white px-4 py-2 rounded hover:bg-[#a34d30] transition"
         >
           {isFetching ? "Refreshing..." : "Refetch Posts"}
         </button>
       </div>
 
       <ul className="space-y-3">
-        {posts.slice(0, 10).map((post) => (
+        {posts?.map((post) => (
           <li
             key={post.id}
             className="p-4 border rounded-lg shadow-sm hover:bg-gray-50"
@@ -47,6 +52,23 @@ const PostsComponent = () => {
           </li>
         ))}
       </ul>
+
+      <div className="flex justify-between mt-4">
+        <button
+          onClick={() => setPage((old) => Math.max(old - 1, 1))}
+          disabled={page === 1}
+          className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+        >
+          Previous
+        </button>
+        <span>Page {page}</span>
+        <button
+          onClick={() => setPage((old) => old + 1)}
+          className="px-4 py-2 bg-gray-200 rounded"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
