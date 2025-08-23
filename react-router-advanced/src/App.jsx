@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
@@ -9,6 +9,7 @@ import './index.css';
 
 function App() {
   return (
+    <BrowserRouter>
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<Home />} />
@@ -31,6 +32,7 @@ function App() {
       {/* Catch-all redirect */}
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>
+    </BrowserRouter>
   );
 }
 
