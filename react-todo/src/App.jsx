@@ -1,7 +1,5 @@
 import React from "react";
 import TodoList from "./components/TodoList"; 
-import Testing from "./components/Testing";
-import './index.css'
 
 function App() {
   return (
@@ -12,8 +10,6 @@ function App() {
         </h1>
         <TodoList />
       </div>
-            {/* Testing component for checker */}
-      <Testing />
     </div>
   );
 }
